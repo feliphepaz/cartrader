@@ -1,6 +1,6 @@
 <template>
   <header class="navbar">
-    <a href="/" class="navbar__logo">cartrader</a>
+    <NuxtLink to="/" class="navbar__logo">cartrader</NuxtLink>
   </header>
 </template>
 

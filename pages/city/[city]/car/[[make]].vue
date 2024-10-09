@@ -1,5 +1,15 @@
 <template>
-  <div>
-    <h1>Make</h1>
+  <div class="list">
+    <ListCard />
+    <ListCard />
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 75%;
+  }
+</style>
