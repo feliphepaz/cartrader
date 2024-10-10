@@ -1,13 +1,28 @@
 <template>
-  <img src="https://carwow-uk-wp-3.imgix.net/18015-MC20BluInfinito-scaled-e1707920217641.jpg" alt="Car">
+  <img :src="car.url">
   <div class="head">
     <div class="head__info">
-      <h2>Range Rover Sport</h2>
-      <p>5 seats | 14,666 miles</p>
+      <h2>{{ car.name }}</h2>
+      <p>{{ car.seats }} seats | {{ car.miles }} miles</p>
     </div>
-    <span class="head__price">$84,777</span>
+    <span class="head__price">${{ car.price }}</span>
   </div>
 </template>
+
+<script setup lang="ts">
+  interface Props {
+    car?: {
+      name: string
+      description: string
+      url: string
+      seats: number
+      miles: string
+      price: string
+    }
+  }
+
+  const props = defineProps<Props>()
+</script>
 
 <style lang="scss" scoped>
   .head {

@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <ListCard v-for="car in cars" :car="car" />
+    <ListCard v-for="car in cars" :key="car.id" :car="car" />
   </div>
 </template>
 

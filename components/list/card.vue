@@ -6,7 +6,7 @@
         <h3>{{ car.name }}</h3>
         <p>{{ car.description }}</p>
       </div>
-      <span class="card__details__price">{{ car.price }}</span>
+      <span class="card__details__price">${{ car.price }}</span>
     </div>
   </NuxtLink>
 </template>
@@ -17,7 +17,7 @@
       id: number
       name: string
       description: string
-      url?: string
+      url: string
       price: string
     }
   }

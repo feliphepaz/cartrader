@@ -1,6 +1,6 @@
 <template>
   <div class="contact">
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, incidunt explicabo dignissimos!</p>
+    <p>{{ description }}</p>
     <form action="POST">
       <input type="text" placeholder="Name">
       <input type="text" placeholder="Email">
@@ -10,6 +10,14 @@
     </form>
   </div>
 </template>
+
+<script setup lang="ts">
+  interface Props {
+    description: string
+  }
+
+  const props = defineProps<Props>()
+</script>
 
 <style lang="scss" scoped>
   .contact {

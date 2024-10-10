@@ -1,19 +1,18 @@
 <template>
   <ul class="benefits">
-    <li>
-      No Accidents
-    </li>
-    <li>
-      Low KM
-    </li>
-    <li>
-      Vehicle Detailed
-    </li>
-    <li>
-      Leather Interior
+    <li v-for="(benefit, index) in benefits" :key="index">
+      {{ benefit }}
     </li>
   </ul>
 </template>
+
+<script setup lang="ts">
+  interface Props {
+    benefits: string[]
+  }
+
+  const props = defineProps<Props>()
+</script>
 
 <style lang="scss" scoped>
   .benefits {
