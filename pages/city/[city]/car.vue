@@ -1,8 +1,8 @@
 <template>
-  <main class="container">
+  <Container flex>
     <ListFilter />
     <NuxtPage />
-  </main>
+  </Container>
 </template>
 
 <script setup lang="ts">
@@ -21,10 +21,3 @@
     );
   }
 </script>
-
-<style lang="scss" scoped>
-  .container {
-    display: flex;
-    gap: 60px;
-  }
-</style>
