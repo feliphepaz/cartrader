@@ -1,6 +1,6 @@
 <template>
   <Container flex center>
-    <div class="error-wrapper">
+    <div class="error">
       <h1>404</h1>
       <p>Page not found</p>
       <NuxtLink to="/">Go Back</NuxtLink>
@@ -9,7 +9,7 @@
 </template>
 
 <style lang="scss" scoped>
-  .error-wrapper {
+  .error {
     max-width: 300px;
     padding-top: 160px;
 
