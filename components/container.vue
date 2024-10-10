@@ -1,5 +1,5 @@
 <template>
-  <main :class="props.flex ? 'container flex' : 'container'">
+  <main :class="`container ${props.flex ? 'flex' : ''} ${props.center ? 'center' : ''}`">
     <slot />
   </main>
 </template>
@@ -7,9 +7,12 @@
 <script setup lang="ts">
   interface Props {
     flex?: boolean
+    center?: boolean
   }
 
   const props = defineProps<Props>()
+
+  const isCentralized = computed(() => props.center ? 'center' : 'normal')
 </script>
 
 <style lang="scss" scoped>
@@ -20,6 +23,7 @@
 
     &.flex {
       display: flex;
+      justify-content: v-bind(isCentralized);
       gap: 60px;
     }
   }
