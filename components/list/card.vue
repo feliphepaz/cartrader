@@ -1,15 +1,29 @@
 <template>
-  <a class="card" href="#">
-    <img src="https://carwow-uk-wp-3.imgix.net/18015-MC20BluInfinito-scaled-e1707920217641.jpg" alt="Car">
+  <NuxtLink class="card" :to="`/car/${car.name}-${car.id}`">
+    <img :src="car.url" :alt="car.name">
     <div class="card__details">
       <div class="card__details__info">
-        <h3>Range Rover Sport</h3>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est dolorum magni voluptate hic id velit perspiciatis.</p>
+        <h3>{{ car.name }}</h3>
+        <p>{{ car.description }}</p>
       </div>
-      <span class="card__details__price">R$ 84,777</span>
+      <span class="card__details__price">{{ car.price }}</span>
     </div>
-  </a>
+  </NuxtLink>
 </template>
+
+<script setup lang="ts">
+  interface Props {
+    car?: {
+      id: number
+      name: string
+      description: string
+      url?: string
+      price: string
+    }
+  }
+
+  const props = defineProps<Props>()
+</script>
 
 <style lang="scss" scoped>
   .card {

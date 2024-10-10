@@ -1,12 +1,16 @@
 <template>
   <Container flex center>
     <div class="error">
-      <h1>404</h1>
-      <p>Page not found</p>
+      <h1>{{ error.statusCode }}</h1>
+      <p>{{ error.message }}</p>
       <NuxtLink to="/">Go Back</NuxtLink>
     </div>
   </Container>
 </template>
+
+<script setup lang="ts">
+  const error = useError()
+</script>
 
 <style lang="scss" scoped>
   .error {

@@ -1,5 +1,5 @@
 <template>
-  <main :class="`container ${props.flex ? 'flex' : ''} ${props.center ? 'center' : ''}`">
+  <main :class="`container ${flex ? 'flex' : ''} ${center ? 'center' : ''}`">
     <slot />
   </main>
 </template>

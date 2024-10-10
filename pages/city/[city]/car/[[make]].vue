@@ -1,9 +1,12 @@
 <template>
   <div class="list">
-    <ListCard />
-    <ListCard />
+    <ListCard v-for="car in cars" :car="car" />
   </div>
 </template>
+
+<script setup lang="ts">
+  const { cars } = useCars()
+</script>
 
 <style lang="scss" scoped>
   .list {
