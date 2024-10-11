@@ -50,6 +50,12 @@
   function applyLocation() {
     toggleModal('location')
     if (!city.value) return
+    if (!isNaN(parseInt(city.value))) {
+      throw createError({
+        statusCode: 400,
+        message: 'Invalid city format'
+      })
+    }
     navigateTo(`/city/${city.value}/car/${make}`)
   }
 </script>
