@@ -2,22 +2,57 @@
   <div class="filter">
     <div class="filter__item">
       <h4>Location</h4>
-      <span>Ottawa</span>
-      <div class="filter__item__tool">
-        <input type="text" placeholder="Search by city...">
+      <span @click="toggleModal('location')">{{ route.params.city }}</span>
+      <form
+        @submit.prevent="applyLocation"
+        v-show="modal.location"
+        class="filter__item__tool"
+      >
+        <input v-model="city" type="text" placeholder="Search by city...">
         <button type="submit">Apply</button>
-      </div>
+      </form>
     </div>
     <div class="filter__item">
       <h4>Make</h4>
-      <span>Any</span>
+      <span @click="toggleModal('make')">Any</span>
+      <form v-show="modal.make" class="filter__item__tool">
+        <input type="text" placeholder="Search by city...">
+        <button type="submit">Apply</button>
+      </form>
     </div>
     <div class="filter__item">
       <h4>Price</h4>
-      <span>Any</span>
+      <span @click="toggleModal('price')">Any</span>
+      <form v-show="modal.price" class="filter__item__tool">
+        <input type="text" placeholder="Search by city...">
+        <button type="submit">Apply</button>
+      </form>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+  const route = useRoute()
+
+  const city = ref('')
+  const modal = ref({
+    location: false,
+    make: false,
+    price: false
+  })
+
+  const make = route.params.make
+
+  function toggleModal(key: keyof typeof modal.value) {
+    modal.value[key] = !modal.value[key]
+  }
+
+  function applyLocation() {
+    toggleModal('location')
+    if (!city.value) return
+    navigateTo(`/city/${city.value}/car/${make}`)
+  }
+</script>
 
 <style lang="scss" scoped>
   .filter {
@@ -41,10 +76,11 @@
 
       span {
         color: #0EA5E9;
+        cursor: pointer;
       }
 
       &__tool {
-        display: none;
+        display: flex;
         flex-direction: column;
         gap: 5px;
         padding: 20px;

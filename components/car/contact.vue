@@ -1,7 +1,7 @@
 <template>
   <div class="contact">
     <p>{{ description }}</p>
-    <form action="POST">
+    <form>
       <input type="text" placeholder="Name">
       <input type="text" placeholder="Email">
       <input type="text" placeholder="Phone">
