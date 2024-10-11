@@ -1,12 +1,12 @@
 <template>
-  <NuxtLink class="card" :to="`/car/${car.name}-${car.id}`">
-    <img :src="car.url" :alt="car.name">
+  <NuxtLink class="card" :to="`/car/${car?.name}-${car?.id}`">
+    <NuxtImg :src="car?.url" :alt="car?.name" />
     <div class="card__details">
       <div class="card__details__info">
-        <h3>{{ car.name }}</h3>
-        <p>{{ car.description }}</p>
+        <h3>{{ car?.name }}</h3>
+        <p>{{ car?.description }}</p>
       </div>
-      <span class="card__details__price">${{ car.price }}</span>
+      <span class="card__details__price">${{ car?.price }}</span>
     </div>
   </NuxtLink>
 </template>

@@ -1,11 +1,11 @@
 <template>
-  <img :src="car.url">
+  <NuxtImg :src="car?.url" />
   <div class="head">
     <div class="head__info">
-      <h2>{{ car.name }}</h2>
-      <p>{{ car.seats }} seats | {{ car.miles }} miles</p>
+      <h2>{{ car?.name }}</h2>
+      <p>{{ car?.seats }} seats | {{ car?.miles }} miles</p>
     </div>
-    <span class="head__price">${{ car.price }}</span>
+    <span class="head__price">${{ car?.price }}</span>
   </div>
 </template>
 
