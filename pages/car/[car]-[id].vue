@@ -1,5 +1,5 @@
 <template>
-  <Container>
+  <Container v-if="carData">
     <CarHead :car="carData" />
     <CarBenefits :benefits="carData.features" />
     <CarContact :description="carData.description" />
