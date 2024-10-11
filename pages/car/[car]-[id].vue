@@ -20,6 +20,13 @@
     })
   })
 
+  if (!carData.value) {
+    throw createError({
+      statusCode: 404,
+      message: `Car with ID of ${id} does not exist`
+    })
+  }
+
   useHead({
     title: toTitleCase(car)
   })
