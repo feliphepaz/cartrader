@@ -1,11 +1,30 @@
 <template>
   <div class="list">
-    <ListCard v-for="car in cars" :key="car.id" :car="car" />
+    <ListCard
+      v-for="car in cars"
+      @favor="handleFavorite"
+      :key="car.id"
+      :car="car"
+      :favored="car.id in favorite"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
   const { cars } = useCars()
+
+  const favorite = useLocalStorage('favorite', {})
+
+  function handleFavorite(id: keyof typeof favorite.value) {
+    if (id in favorite.value) {
+      delete favorite.value[id]
+    } else {
+      favorite.value = {
+        ...favorite.value,
+        [id]: true
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
