@@ -40,6 +40,7 @@
   },
   {
     "id": 3,
+    "year": 2015,
     "name": "Land Rover Luxury",
     "price": 200434,
     "url": "https://www.motortrend.com/uploads/2022/04/2022-Range-Rover-First-Edition-P530-SWB-on-road-1.jpg?fit=around%7C875:492",
@@ -52,8 +53,8 @@
   },
   {
     "id": 4,
-    "name": "Toyota Corolla",
     "year": 2015,
+    "name": "Toyota Corolla",
     "price": 23000,
     "url": "https://crdms.images.consumerreports.org/c_lfill,w_470,q_auto,f_auto/prod/cars/chrome/white/2022TOC040001_1280_01",
     "seats": 5,
@@ -65,8 +66,8 @@
   },
   {
     "id": 5,
-    "name": "Toyota Sienna",
     "year": 2019,
+    "name": "Toyota Sienna",
     "price": 34000,
     "url": "https://upload.wikimedia.org/wikipedia/commons/2/22/2021_Toyota_Sienna_XLE_Hybrid%2C_front_12.21.21.jpg",
     "seats": 5,
@@ -78,8 +79,8 @@
   },
   {
     "id": 6,
-    "name": "Porsche Targa",
     "year": 2014,
+    "name": "Porsche Targa",
     "price": 250000,
     "url": "https://hips.hearstapps.com/hmg-prod/images/2021-porsche-911-targa-4-4s-108-1597085217.jpg?crop=0.521xw:0.389xh;0.274xw,0.413xh&resize=1200:*",
     "seats": 5,
@@ -91,8 +92,8 @@
   },
   {
     "id": 7,
-    "name": "Kia Seltos",
     "year": 2012,
+    "name": "Kia Seltos",
     "price": 39000,
     "url": "https://i.gaw.to/content/photos/53/04/530444-kia-seltos-2024-une-bonne-mise-a-jour-s-en-vient.jpg?1024x640",
     "seats": 5,
