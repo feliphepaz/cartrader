@@ -8,11 +8,17 @@
   interface Props {
     flex?: boolean
     center?: boolean
+    column?: boolean
+    gap?: number
   }
 
-  const props = defineProps<Props>()
+  const { center, column, gap } = withDefaults(defineProps<Props>(), {
+    gap: 60
+  })
 
-  const isCentralized = computed(() => props.center ? 'center' : 'normal')
+  const isCentralized = computed(() => center ? 'center' : 'normal')
+  const isColumn = computed(() => column ? 'column' : 'row')
+  const formattedGap = computed(() => `${gap}px`)
 </script>
 
 <style lang="scss" scoped>
@@ -23,8 +29,9 @@
 
     &.flex {
       display: flex;
+      flex-direction: v-bind(isColumn);
       justify-content: v-bind(isCentralized);
-      gap: 60px;
+      gap: v-bind(formattedGap);
     }
   }
 </style>

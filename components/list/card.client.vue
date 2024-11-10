@@ -1,7 +1,7 @@
 <template>
   <div class="card" :to="`/car/${car?.name}-${car?.id}`">
     <NuxtImg
-      @click="navigateTo(`/car/${props.car?.name}-${props.car?.id}`)"
+      @click="navigateTo(`/car/${car?.name}-${car?.id}`)"
       :src="car?.url"
       :alt="car?.name"
     />
@@ -35,7 +35,7 @@
     favored: boolean
   }
 
-  const props = defineProps<Props>()
+  defineProps<Props>()
 </script>
 
 <style lang="scss" scoped>

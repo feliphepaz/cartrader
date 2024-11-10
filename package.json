@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.8.1",
-    "@nuxtjs/supabase": "0.3.0",
+    "@nuxtjs/supabase": "^1.4.2",
     "@vueuse/core": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
     "nuxt": "^3.13.0",
