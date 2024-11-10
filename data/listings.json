@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "id": 0,
         "name": "Toyota Mirai",
         "make": "Toyota",
         "model": "Mirai",
@@ -14,7 +14,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis odio et laboriosam!"
       },
       {
-        "id": 2,
+        "id": 1,
         "name": "Maserati Levante",
         "make": "Maserati",
         "model": "Levante",

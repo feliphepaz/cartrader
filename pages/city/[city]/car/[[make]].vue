@@ -11,9 +11,22 @@
 </template>
 
 <script setup lang="ts">
-  const { cars } = useCars()
+  const route = useRoute()
 
   const favorite = useLocalStorage('favorite', {})
+
+  const minPrice = computed(() => route.query.minPrice)
+  const maxPrice = computed(() => route.query.maxPrice)
+
+  const { cars } = await useFetchCars(route.params.city, {
+    make: route.params.make,
+    minPrice: minPrice,
+    maxPrice: maxPrice
+  })
+
+  watch([minPrice, maxPrice], () => {
+    window.location.reload()
+  })
 
   function handleFavorite(id: keyof typeof favorite.value) {
     if (id in favorite.value) {

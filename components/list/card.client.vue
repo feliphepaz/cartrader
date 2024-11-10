@@ -30,7 +30,7 @@
       name: string
       description: string
       url: string
-      price: string
+      price: number
     },
     favored: boolean
   }

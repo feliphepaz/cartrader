@@ -17,6 +17,12 @@
       <span @click="toggleModal('make')">{{ route.params.make || 'Any' }}</span>
       <div v-show="modal.make" class="filter__item__tool -grid">
         <NuxtLink
+          :to="`/city/${route.params.city}/car`"
+          @click="toggleModal('make')"
+        >
+          Any
+        </NuxtLink>
+        <NuxtLink
           v-for="(make, index) in makes"
           :key="index"
           :to="`/city/${route.params.city}/car/${make}?${queries}`"
@@ -93,10 +99,20 @@
 
   function applyPrice() {
     toggleModal('price')
-    if (!priceRange.value.min && !priceRange.value.max) return
+
+    if (!priceRange.value.min && !priceRange.value.max) {
+      router.push({
+        query: {
+          minPrice: null,
+          maxPrice: null
+        }
+      })
+    }
+
     if (priceRange.value.min && priceRange.value.max) {
       if (+priceRange.value.min > +priceRange.value.max) return
     }
+
     router.push({
       query: {
         minPrice: priceRange.value.min,

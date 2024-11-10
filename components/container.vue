@@ -12,13 +12,13 @@
     gap?: number
   }
 
-  const { center, column, gap } = withDefaults(defineProps<Props>(), {
+  const props = withDefaults(defineProps<Props>(), {
     gap: 60
   })
 
-  const isCentralized = computed(() => center ? 'center' : 'normal')
-  const isColumn = computed(() => column ? 'column' : 'row')
-  const formattedGap = computed(() => `${gap}px`)
+  const isCentralized = computed(() => props.center ? 'center' : 'normal')
+  const isColumn = computed(() => props.column ? 'column' : 'row')
+  const formattedGap = computed(() => `${props.gap}px`)
 </script>
 
 <style lang="scss" scoped>

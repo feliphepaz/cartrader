@@ -1,4 +1,4 @@
-export const useUtilities = () => {
+export default () => {
   function toTitleCase(string: string) {
     return string.replace(
       /\w\S*/g,
