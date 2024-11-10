@@ -14,34 +14,18 @@ export default defineEventHandler((e) => {
   const { city } = e.context.params as Params
   const { make, minPrice, maxPrice } = getQuery(e) as Queries
 
-  function checkCity(car: any) {
-    return car.city.toLowerCase() === city.toLowerCase()
-  }
-
-  function checkMake(car: any) {
-    return car.make.toLowerCase() === make.toLowerCase()
-  }
-
-  function checkMinPrice(car: any) {
-    return car.price >= +minPrice
-  }
-
-  function checkMaxPrice(car: any) {
-    return car.price <= +maxPrice
-  }
-
-  let filteredCars = cars.filter((car) => checkCity(car))
+  let filteredCars = cars.filter((car) => car.city.toLowerCase() === city.toLowerCase())
 
   if (make) {
-    filteredCars = filteredCars.filter((car) => checkMake(car))
+    filteredCars = filteredCars.filter((car) => car.make.toLowerCase() === make.toLowerCase())
   }
 
   if (minPrice) {
-    filteredCars = filteredCars.filter((car) => checkMinPrice(car))
+    filteredCars = filteredCars.filter((car) => car.price >= +minPrice)
   }
 
   if (maxPrice) {
-    filteredCars = filteredCars.filter((car) => checkMaxPrice(car))
+    filteredCars = filteredCars.filter((car) => car.price <= +maxPrice)
   }
 
   return filteredCars
