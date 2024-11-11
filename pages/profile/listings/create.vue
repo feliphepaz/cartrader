@@ -21,7 +21,27 @@
 <script setup lang="ts">
   const { makes } = useCars()
 
-  const data = ref({
+  type Data = {
+    make: string
+    model: string
+    year: string
+    miles: string
+    price: string
+    city: string
+    seats: string
+    features: string
+    description: string
+    image: any
+  }
+
+  type Input = {
+    id: number
+    title: string
+    name: keyof Data
+    placeholder: string
+  }
+
+  const data = ref<Data>({
     make: '',
     model: '',
     year: '',
@@ -34,7 +54,7 @@
     image: null
   })
 
-  const inputs = [
+  const inputs: Input[] = [
     {
       id: 0,
       title: 'Model *',

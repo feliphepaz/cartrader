@@ -1,40 +1,36 @@
 import type { LocationQueryValue } from "vue-router"
+import type { Car } from "@/types/Car"
 
 type Filters = {
-  make: string | string[]
+  make: LocationQueryValue | LocationQueryValue[]
   minPrice: ComputedRef<LocationQueryValue | LocationQueryValue[]>
   maxPrice: ComputedRef<LocationQueryValue | LocationQueryValue[]>
 }
 
-type Car = {
-  id: number
-  year: number
-  name: string
-  price: number
-  city: string
-  make: string
-  url: string
-  seats: number
-  miles: string
-  features: string[]
-  description: string
-}
-
 export default async (city: string | string[], filters: Filters) => {
-  const { data, error } = await useFetch<Car[]>(`/api/cars/${city}`, {
-    params: {
-      ...filters
-    }
-  })
+  const cars = ref()
 
-  if (error.value) {
-    throw createError({
-      ...error.value,
-      statusMessage: "Unable to fetch cars"
+  async function getCars() {
+    const { data, error } = await useFetch<Car[]>(`/api/cars/${city}`, {
+      params: {
+        make: filters.make,
+        minPrice: filters.minPrice.value,
+        maxPrice: filters.maxPrice.value
+      }
     })
+
+    if (error.value) {
+      throw createError({
+        ...error.value,
+        statusMessage: "Unable to fetch cars"
+      })
+    }
+
+    cars.value = data.value
   }
 
   return {
-    cars: data.value || []
+    cars,
+    getCars
   }
 }

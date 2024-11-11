@@ -18,14 +18,10 @@
   const minPrice = computed(() => route.query.minPrice)
   const maxPrice = computed(() => route.query.maxPrice)
 
-  const { cars } = await useFetchCars(route.params.city, {
+  const { cars, getCars } = await useFetchCars(route.params.city, {
     make: route.params.make,
     minPrice: minPrice,
     maxPrice: maxPrice
-  })
-
-  watch([minPrice, maxPrice], () => {
-    window.location.reload()
   })
 
   function handleFavorite(id: keyof typeof favorite.value) {
@@ -38,6 +34,10 @@
       }
     }
   }
+
+  watch([minPrice, maxPrice], () => {
+    getCars()
+  }, { immediate: true })
 </script>
 
 <style lang="scss" scoped>
