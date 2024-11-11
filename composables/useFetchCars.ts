@@ -1,21 +1,17 @@
-import type { LocationQueryValue } from "vue-router"
-
-type Filters = {
-  make: LocationQueryValue | LocationQueryValue[]
-  minPrice: ComputedRef<LocationQueryValue | LocationQueryValue[]>
-  maxPrice: ComputedRef<LocationQueryValue | LocationQueryValue[]>
-}
-
-export default async (city: string | string[], filters: Filters) => {
+export default async () => {
+  const route = useRoute()
   const cars = ref()
+
+  const minPrice = computed(() => route.query.minPrice)
+  const maxPrice = computed(() => route.query.maxPrice)
 
   async function getCars() {
     try {
-      const data = await $fetch(`/api/cars/${city}`, {
+      const data = await $fetch(`/api/cars/${route.params.city}`, {
         params: {
-          make: filters.make,
-          minPrice: filters.minPrice.value,
-          maxPrice: filters.maxPrice.value
+          make: route.params.make,
+          minPrice: minPrice.value,
+          maxPrice: maxPrice.value
         }
       })
 
@@ -26,6 +22,10 @@ export default async (city: string | string[], filters: Filters) => {
       })
     }
   }
+
+  watch([minPrice, maxPrice], () => {
+    getCars()
+  }, { immediate: true })
 
   return {
     cars,

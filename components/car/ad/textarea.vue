@@ -12,7 +12,7 @@
 
   defineProps<Props>()
 
-  const value = defineModel()
+  const value = defineModel<string>()
 </script>
 
 <style lang="scss" scoped>

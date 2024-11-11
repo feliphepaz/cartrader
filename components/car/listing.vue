@@ -15,11 +15,10 @@
 </template>
 
 <script setup lang="ts">
+  import type { Car } from '@/types/Car'
+
   interface Props {
-    listing: {
-      title: string
-      price: string
-    }
+    listing: Partial<Car>
   }
 
   defineProps<Props>()

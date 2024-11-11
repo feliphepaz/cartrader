@@ -9,28 +9,38 @@
       name="image"
       id="image"
       accept="image/png, image/jpeg"
-      @change="({ target }) => getImage(target)"
+      @change="({ target }) => getImage(target as EventTarget & HTMLInputElement)"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-  const image = ref({
+  type ImageFile = {
+    preview: string | null
+    image: File | null
+  }
+
+  const image = ref<ImageFile>({
     preview: null,
     image: null
   })
 
   const emit = defineEmits(['changeFile'])
 
-  function getImage(target) {
-    if (target.files) {
+  function getImage(target: EventTarget & HTMLInputElement) {
+    if (target.files && target.files[0]) {
+      const file = target.files[0]
       const reader = new FileReader()
-      reader.onload = ({ target }) => {
-        image.value.preview = target.result
+
+      reader.onload = () => {
+        image.value.preview = reader.result as string
       }
-      image.value.image = target.files[0]
-      reader.readAsDataURL(target.files[0])
-      emit('changeFile', target.files[0])
+
+      image.value.image = file
+
+      reader.readAsDataURL(file)
+
+      emit('changeFile', file)
     }
   }
 </script>

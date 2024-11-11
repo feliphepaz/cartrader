@@ -8,6 +8,7 @@
 
 <script setup lang="ts">
   const route = useRoute()
+
   const { cars } = useCars()
   const { toTitleCase } = useUtilities()
 

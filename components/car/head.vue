@@ -10,15 +10,10 @@
 </template>
 
 <script setup lang="ts">
+  import type { Car } from '@/types/Car'
+
   interface Props {
-    car?: {
-      name: string
-      description: string
-      url: string
-      seats: number
-      miles: string
-      price: string
-    }
+    car: Car
   }
 
   defineProps<Props>()

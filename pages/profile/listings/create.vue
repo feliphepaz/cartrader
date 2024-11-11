@@ -19,37 +19,25 @@
 </template>
 
 <script setup lang="ts">
+  import type { Car } from '@/types/Car'
   const { makes } = useCars()
-
-  type Data = {
-    make: string
-    model: string
-    year: string
-    miles: string
-    price: string
-    city: string
-    seats: string
-    features: string
-    description: string
-    image: any
-  }
 
   type Input = {
     id: number
     title: string
-    name: keyof Data
+    name: keyof Partial<Car>
     placeholder: string
   }
 
-  const data = ref<Data>({
+  const data = ref<Partial<Car>>({
     make: '',
     model: '',
-    year: '',
+    year: 0,
     miles: '',
-    price: '',
+    price: 0,
     city: '',
-    seats: '',
-    features: '',
+    seats: 0,
+    features: [''],
     description: '',
     image: null
   })
