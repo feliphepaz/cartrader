@@ -1,7 +1,15 @@
 <template>
-  <div class="list">
+  <div v-if="isLoading" class="loading">
+    <h2>Loading...</h2>
+  </div>
+
+  <div v-else-if="notFound" class="not-found">
+    <h2>Cars not found</h2>
+  </div>
+
+  <div v-else class="list">
     <ListCard
-      v-for="car in cars"
+      v-for="car in data"
       @favor="handleFavorite"
       :key="car.id"
       :car="car"
@@ -11,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-  const { cars } = await useFetchCars()
+  const { isLoading, data, notFound } = await useFetchCars()
 
   const favorite = useLocalStorage('favorite', {})
 
@@ -28,6 +36,22 @@
 </script>
 
 <style lang="scss" scoped>
+  .loading,
+  .not-found {
+    width: 75%;
+
+    h2 {
+      font-family: sans-serif;
+      letter-spacing: 0.1px;
+    }
+  }
+
+  .not-found {
+    h2 {
+      color: red;
+    }
+  }
+
   .list {
     display: flex;
     flex-direction: column;

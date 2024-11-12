@@ -1,13 +1,19 @@
 export default async () => {
   const route = useRoute()
-  const cars = ref()
+
+  const isLoading = ref(true)
+  const data = ref()
+  const notFound = ref(false)
 
   const minPrice = computed(() => route.query.minPrice)
   const maxPrice = computed(() => route.query.maxPrice)
 
-  async function getCars() {
+  async function getData() {
     try {
-      const data = await $fetch(`/api/cars/${route.params.city}`, {
+      isLoading.value = true
+      notFound.value = false
+
+      const carsData = await $fetch(`/api/cars/${route.params.city}`, {
         params: {
           make: route.params.make,
           minPrice: minPrice.value,
@@ -15,20 +21,24 @@ export default async () => {
         }
       })
 
-      cars.value = data
+      data.value = carsData
     } catch (error) {
       throw createError({
         statusMessage: "Unable to fetch cars"
       })
+    } finally {
+      if (data.value.length <= 0) notFound.value = true
+      isLoading.value = false
     }
   }
 
   watch([minPrice, maxPrice], () => {
-    getCars()
+    getData()
   }, { immediate: true })
 
   return {
-    cars,
-    getCars
+    isLoading,
+    data,
+    notFound
   }
 }
