@@ -24,6 +24,7 @@ export default async () => {
       data.value = carsData
     } catch (error) {
       throw createError({
+        statusCode: 500,
         statusMessage: "Unable to fetch cars"
       })
     } finally {
