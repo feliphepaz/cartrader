@@ -1,7 +1,7 @@
 <template>
   <Container>
     <CarMessage
-      v-if="messages!.length > 0"
+      v-if="messages && messages.length > 0"
       v-for="message in messages"
       :key="message.id"
       :message="message"

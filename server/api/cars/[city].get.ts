@@ -16,8 +16,8 @@ type Filters = {
   city: string
   make?: string
   price?: {
-    gte: number
-    lte: number
+    gte?: number
+    lte?: number
   }
 }
 
@@ -31,6 +31,10 @@ export default defineEventHandler((e) => {
 
   if (make) {
     filters.make = make
+  }
+
+  if (minPrice || maxPrice) {
+    filters.price = {}
   }
 
   if (minPrice) {

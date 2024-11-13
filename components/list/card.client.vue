@@ -51,7 +51,7 @@
     color: black;
 
     img {
-      width: 300px;
+      width: 45%;
       height: 220px;
       object-fit: cover;
       cursor: pointer;
@@ -62,7 +62,7 @@
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      width: 100%;
+      width: 55%;
       padding: 20px;
 
       &__favorite {
