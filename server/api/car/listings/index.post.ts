@@ -21,7 +21,7 @@ const schema = Joi.object({
 export default defineEventHandler(async (e) => {
   const body = await readBody(e)
 
-  const { value, error } = schema.validate(body);
+  const { error } = schema.validate(body)
 
   if (error) {
     throw createError({
