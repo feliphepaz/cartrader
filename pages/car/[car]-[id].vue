@@ -2,7 +2,7 @@
   <Container v-if="data">
     <CarHead :car="data" />
     <CarBenefits :benefits="data.features" />
-    <CarContact :description="data.description" />
+    <CarContact :id="data.id" :description="data.description" />
   </Container>
 </template>
 

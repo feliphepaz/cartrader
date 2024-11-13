@@ -1,13 +1,23 @@
 <template>
   <div class="message">
-    <h3>Laith Harb</h3>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis, dicta! Harum ipsum minus necessitatibus totam.</p>
+    <h3>{{ message.name }}</h3>
+    <p>{{ message.message }}</p>
     <div class="message__contact">
-      <p class="message__contact__email">laith@email.com</p>
-      <p class="message__contact__tel">555-555-5555</p>
+      <p class="message__contact__email">{{ message.email }}</p>
+      <p class="message__contact__tel">{{ message.phone }}</p>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+  import type { Message } from '@/types/Message'
+
+  interface Props {
+    message: Message
+  }
+
+  defineProps<Props>()
+</script>
 
 <style lang="scss" scoped>
   .message {
@@ -34,7 +44,7 @@
 
     &__contact {
       display: flex;
-      gap: 40px;
+      gap: 20px;
 
       &__email {
         font-size: 14px;

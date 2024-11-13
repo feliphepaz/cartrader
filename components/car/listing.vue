@@ -1,7 +1,7 @@
 <template>
   <div class="car-listing">
     <div class="car-listing__content">
-      <img :src="listing.url" :alt="listing.name">
+      <img :src="imageUrl" :alt="listing.name">
       <div class="car-listing__content__info">
         <h3>{{ listing.name }}</h3>
         <span>${{ listing.price }}</span>
@@ -9,7 +9,7 @@
     </div>
     <div class="car-listing__options">
       <NuxtLink :to="`/profile/listings/view/${listing.id}`" class="car-listing__options__view">View</NuxtLink>
-      <NuxtLink class="car-listing__options__delete">Delete</NuxtLink>
+      <button class="car-listing__options__delete" @click="remove">Delete</button>
     </div>
   </div>
 </template>
@@ -21,7 +21,23 @@
     listing: Partial<Car>
   }
 
-  defineProps<Props>()
+  const { listing } = defineProps<Props>()
+
+  const emit = defineEmits(['refresh'])
+  const config = useRuntimeConfig()
+
+  const imageUrl = computed(() => `${config.public.supabase.url}/storage/v1/object/public/images/${listing.image}`)
+
+  async function remove() {
+    try {
+      await $fetch(`/api/car/listings/${listing.id}`, {
+        method: 'DELETE'
+      })
+      emit('refresh')
+    } catch(error) {
+      alert(error)
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -65,6 +81,7 @@
     &__options {
       display: flex;
       align-self: flex-start;
+      align-items: center;
       gap: 10px;
       font-family: sans-serif;
       padding: 20px;
@@ -75,7 +92,14 @@
       }
 
       &__delete {
+        font-family: sans-serif;
+        font-size: 16px;
+        border: none;
+        background: none;
+        padding: 0;
+        margin: 0;
         color: red;
+        cursor: pointer;
       }
     }
   }

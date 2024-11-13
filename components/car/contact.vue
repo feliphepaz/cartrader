@@ -1,22 +1,55 @@
 <template>
   <div class="contact">
     <p>{{ description }}</p>
-    <form>
-      <input type="text" placeholder="Name">
-      <input type="text" placeholder="Email">
-      <input type="text" placeholder="Phone">
-      <textarea placeholder="Message"></textarea>
-      <button type="submit">Submit</button>
+    <form @submit.prevent="submit">
+      <input v-model="data.name" type="text" placeholder="Name">
+      <input v-model="data.email" type="text" placeholder="Email">
+      <input v-model="data.phone" type="text" placeholder="Phone">
+      <textarea v-model="data.message" placeholder="Message"></textarea>
+      <button type="submit" :disabled="isButtonDisabled">Submit</button>
     </form>
   </div>
 </template>
 
 <script setup lang="ts">
+  import type { Message } from '@/types/Message'
+
   interface Props {
+    id: number
     description: string
   }
 
-  defineProps<Props>()
+  const { id } = defineProps<Props>()
+
+  const data = ref<Message>({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  })
+
+  const isButtonDisabled = computed(() => {
+    for (let key of Object.keys(data.value) as (keyof Message)[]) {
+      if (!data.value[key]) return true
+    }
+    return false
+  })
+
+  async function submit() {
+    const body = {
+      ...data.value
+    }
+
+    try {
+      await $fetch(`/api/car/listings/${id}/message`, {
+        method: 'POST',
+        body
+      })
+      alert('Message sent')
+    } catch(error) {
+      alert(error)
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -53,6 +86,11 @@
         padding: 10px 40px;
         font-size: 16px;
         cursor: pointer;
+
+        &:disabled {
+          cursor: auto;
+          opacity: 0.6;
+        }
       }
     }
   }

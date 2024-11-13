@@ -9,7 +9,7 @@
 
   <div v-else class="list">
     <ListCard
-      v-for="car in data"
+      v-for="car in cars"
       @favor="handleFavorite"
       :key="car.id"
       :car="car"
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-  const { isLoading, data, notFound } = await useFetchCars()
+  const { isLoading, data: cars, notFound } = await useFetchCars()
 
   const favorite = useLocalStorage('favorite', {})
 

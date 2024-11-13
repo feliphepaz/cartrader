@@ -2,7 +2,7 @@
   <div class="card" :to="`/car/${car?.name}-${car?.id}`">
     <NuxtImg
       @click="navigateTo(`/car/${car?.name}-${car?.id}`)"
-      :src="car?.url"
+      :src="imageUrl"
       :alt="car?.name"
     />
     <div class="card__details">
@@ -31,11 +31,16 @@
       description: string
       url: string
       price: number
+      image: File
     },
     favored: boolean
   }
 
-  defineProps<Props>()
+  const { car } = defineProps<Props>()
+
+  const config = useRuntimeConfig()
+
+  const imageUrl = computed(() => `${config.public.supabase.url}/storage/v1/object/public/images/${car!.image}`)
 </script>
 
 <style lang="scss" scoped>
@@ -57,6 +62,7 @@
       flex-direction: column;
       justify-content: space-between;
       position: relative;
+      width: 100%;
       padding: 20px;
 
       &__favorite {

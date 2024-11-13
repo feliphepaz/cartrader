@@ -5,14 +5,25 @@
       <NuxtLink to="/profile/listings/create" class="head__add">+</NuxtLink>
     </div>
 
-    <div class="list">
-      <CarListing v-for="listing in listings" :key="listing.id" :listing="listing" />
+    <div v-if="listings && listings.length > 0" class="list">
+      <CarListing
+        v-for="listing in listings"
+        :key="listing.id"
+        :listing="listing"
+        @refresh="refresh"
+      />
+    </div>
+
+    <div v-else class="no-listings">
+      <h2>No listings</h2>
     </div>
   </Container>
 </template>
 
 <script setup>
-  const { listings } = useCars()
+  const user = useSupabaseUser()
+
+  const { data: listings, refresh } = useFetch(`/api/car/listings/user/${user.value.id}`)
 </script>
 
 <style lang="scss" scoped>
@@ -46,5 +57,12 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+  }
+
+  .no-listings {
+    h2 {
+      font-family: sans-serif;
+      letter-spacing: 0.1px;
+    }
   }
 </style>

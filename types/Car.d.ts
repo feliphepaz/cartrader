@@ -8,8 +8,8 @@ export type Car = {
   seats: number
   make: string
   city: string
-  miles: string
-  features: string[]
+  miles: number
+  features: string | string[]
   description: string
   image?: File | null
 }

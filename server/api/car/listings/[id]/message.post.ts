@@ -9,8 +9,8 @@ const schema = Joi.object({
     minDomainSegments: 2,
     tlds: {allow: ['com', 'net']}
   }),
-  phone: Joi.string().length(10).pattern(/^[0-9]+$/).required(),
-  message: Joi.string().min(20).required()
+  phone: Joi.string().min(8).required(),
+  message: Joi.string().min(10).required()
 })
 
 type Params = {

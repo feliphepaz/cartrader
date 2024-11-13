@@ -1,5 +1,5 @@
 <template>
-  <NuxtImg :src="car?.url" />
+  <NuxtImg :src="imageUrl" />
   <div class="head">
     <div class="head__info">
       <h2>{{ car?.name }}</h2>
@@ -16,7 +16,11 @@
     car: Car
   }
 
-  defineProps<Props>()
+  const { car } = defineProps<Props>()
+
+  const config = useRuntimeConfig()
+
+  const imageUrl = computed(() => `${config.public.supabase.url}/storage/v1/object/public/images/${car.image}`)
 </script>
 
 <style lang="scss" scoped>
