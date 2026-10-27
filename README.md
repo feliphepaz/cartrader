@@ -101,14 +101,31 @@ yarn install
 
 3. Configure as variáveis de ambiente:
 
-Crie um arquivo `.env` na raiz do projeto com as variáveis necessárias para o Prisma e o Supabase, por exemplo:
+Crie um arquivo `.env` na raiz do projeto com as variáveis necessárias para o Prisma e o Supabase:
 
 ```bash
+# Banco de dados Prisma
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=public"
 DIRECT_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=public"
+
+# Supabase
+SUPABASE_URL="https://SEU-PROJETO.supabase.co"
+SUPABASE_KEY="SUA_ANON_KEY"
+SUPABASE_SERVICE_ROLE_KEY="SUA_SERVICE_ROLE_KEY"
+
+# Variáveis públicas do Nuxt para acesso no cliente
+NUXT_PUBLIC_SUPABASE_URL="https://SEU-PROJETO.supabase.co"
+NUXT_PUBLIC_SUPABASE_KEY="SUA_ANON_KEY"
 ```
 
-Se o projeto estiver usando autenticação do Supabase, também configure as variáveis do serviço conforme seu projeto.
+> Substitua os valores pelos dados reais do seu projeto no Supabase e no PostgreSQL.
+
+4. Gere o cliente Prisma e rode as migrações:
+
+```bash
+npx prisma generate
+npx prisma migrate dev
+```
 
 ## 🗄️ Banco de dados
 
@@ -150,6 +167,21 @@ yarn preview
 ## 📌 Observações
 
 O projeto usa rotas de servidor do Nuxt para expor a lógica de consulta dos veículos, filtrando por cidade e parâmetros como marca e faixa de preço. A aplicação também integra autenticação e dados de usuário com Supabase, enquanto o Prisma organiza a camada de persistência.
+
+## 🔐 Credenciais do Supabase
+
+As chaves necessárias para rodar o projeto normalmente são:
+
+- `SUPABASE_URL`: URL do projeto no Supabase
+- `SUPABASE_KEY`: chave anônima (anon key)
+- `SUPABASE_SERVICE_ROLE_KEY`: chave de serviço para operações do servidor
+- `NUXT_PUBLIC_SUPABASE_URL`: mesma URL para uso no cliente
+- `NUXT_PUBLIC_SUPABASE_KEY`: mesma anon key para uso no cliente
+
+Esses valores podem ser encontrados no painel do Supabase em:
+
+- Project Settings → API
+- Project Settings → Database
 
 ## 🤝 Contribuição
 
