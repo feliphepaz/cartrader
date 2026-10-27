@@ -121,17 +121,6 @@ npx prisma generate
 npx prisma migrate dev
 ```
 
-## 🗄️ Banco de dados
-
-O schema do banco está em `prisma/schema.prisma`.
-
-Para gerar o cliente do Prisma e aplicar o schema:
-
-```bash
-npx prisma generate
-npx prisma migrate dev
-```
-
 ## ▶️ Executando o projeto
 
 Inicie o servidor de desenvolvimento:
