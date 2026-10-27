@@ -1,4 +1,4 @@
-# CarTrader
+# Cartrader
 
 CarTrader é uma aplicação web desenvolvida com Nuxt 3 para explorar, filtrar e visualizar anúncios de veículos por cidade. A plataforma permite buscar carros por marca, faixa de preço e localização, acessar os detalhes do anúncio e entrar em contato com o anunciante.
 
