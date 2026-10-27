@@ -111,11 +111,6 @@ DIRECT_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=public"
 # Supabase
 SUPABASE_URL="https://SEU-PROJETO.supabase.co"
 SUPABASE_KEY="SUA_ANON_KEY"
-SUPABASE_SERVICE_ROLE_KEY="SUA_SERVICE_ROLE_KEY"
-
-# Variáveis públicas do Nuxt para acesso no cliente
-NUXT_PUBLIC_SUPABASE_URL="https://SEU-PROJETO.supabase.co"
-NUXT_PUBLIC_SUPABASE_KEY="SUA_ANON_KEY"
 ```
 
 > Substitua os valores pelos dados reais do seu projeto no Supabase e no PostgreSQL.
