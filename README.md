@@ -22,7 +22,6 @@ Este projeto foi pensado como uma solução moderna de marketplace automotivo, c
 - PostgreSQL
 - Supabase
 - Sass
-- Nuxt Image
 
 ## ✨ Funcionalidades
 
