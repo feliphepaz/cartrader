@@ -1,6 +1,6 @@
 # Cartrader
 
-CarTrader é uma aplicação web desenvolvida com Nuxt 3 para explorar, filtrar e visualizar anúncios de veículos por cidade. A plataforma permite buscar carros por marca, faixa de preço e localização, acessar os detalhes do anúncio e entrar em contato com o anunciante.
+Cartrader é uma aplicação web desenvolvida com Nuxt 3 para explorar, filtrar e visualizar anúncios de veículos por cidade. A plataforma permite buscar carros por marca, faixa de preço e localização, acessar os detalhes do anúncio e entrar em contato com o anunciante.
 
 ## 🚗 Visão geral
 
@@ -161,30 +161,6 @@ yarn preview
 ## 📌 Observações
 
 O projeto usa rotas de servidor do Nuxt para expor a lógica de consulta dos veículos, filtrando por cidade e parâmetros como marca e faixa de preço. A aplicação também integra autenticação e dados de usuário com Supabase, enquanto o Prisma organiza a camada de persistência.
-
-## 🔐 Credenciais do Supabase
-
-As chaves necessárias para rodar o projeto normalmente são:
-
-- `SUPABASE_URL`: URL do projeto no Supabase
-- `SUPABASE_KEY`: chave anônima (anon key)
-- `SUPABASE_SERVICE_ROLE_KEY`: chave de serviço para operações do servidor
-- `NUXT_PUBLIC_SUPABASE_URL`: mesma URL para uso no cliente
-- `NUXT_PUBLIC_SUPABASE_KEY`: mesma anon key para uso no cliente
-
-Esses valores podem ser encontrados no painel do Supabase em:
-
-- Project Settings → API
-- Project Settings → Database
-
-## 🤝 Contribuição
-
-Contribuições são bem-vindas. Para sugerir melhorias ou corrigir problemas:
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature
-3. Commit e push
-4. Abra um pull request
 
 ## 📎 Repositório
 
