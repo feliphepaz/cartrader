@@ -1,75 +1,165 @@
-# Nuxt 3 Minimal Starter
+# CarTrader
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+CarTrader é uma aplicação web desenvolvida com Nuxt 3 para explorar, filtrar e visualizar anúncios de veículos por cidade. A plataforma permite buscar carros por marca, faixa de preço e localização, acessar os detalhes do anúncio e entrar em contato com o anunciante.
 
-## Setup
+## 🚗 Visão geral
 
-Make sure to install the dependencies:
+Este projeto foi pensado como uma solução moderna de marketplace automotivo, com:
+
+- listagem de veículos por cidade;
+- busca e filtros por marca e preço;
+- página de detalhes do veículo;
+- autenticação via Supabase;
+- cadastro de anúncios e perfil do usuário;
+- persistência de dados com Prisma e PostgreSQL.
+
+## 🛠️ Stack tecnológica
+
+- Nuxt 3
+- Vue 3
+- TypeScript
+- Prisma
+- PostgreSQL
+- Supabase
+- Sass
+- Nuxt Image
+
+## ✨ Funcionalidades
+
+- Exploração de carros por cidade
+- Filtro por marca e faixa de preço
+- Detalhe do veículo com informações e recursos
+- Área de login/autenticação com Supabase
+- Perfil de usuário com listagem de anúncios
+- API backend em Nuxt Server Routes
+- Persistência de dados estruturada com Prisma
+
+## 📁 Estrutura do projeto
 
 ```bash
-# npm
-npm install
+.
+├── assets/
+│   └── main.scss
+├── components/
+│   ├── car/
+│   ├── home/
+│   ├── list/
+│   ├── container.vue
+│   └── navbar.vue
+├── composables/
+│   ├── useCars.ts
+│   ├── useFetchCar.ts
+│   ├── useFetchCars.ts
+│   └── useUtilities.ts
+├── pages/
+│   ├── car/
+│   ├── city/
+│   ├── profile/
+│   ├── index.vue
+│   ├── login.vue
+├── prisma/
+│   ├── migrations/
+│   └── schema.prisma
+├── public/
+├── server/
+│   ├── api/
+│   └── tsconfig.json
+├── types/
+├── app.vue
+├── error.vue
+├── nuxt.config.ts
+├── package.json
+├── tsconfig.json
+├── yarn.lock
+├── .gitignore
+└── README.md
+```
 
-# pnpm
-pnpm install
+## ⚙️ Requisitos
 
-# yarn
+Antes de iniciar, certifique-se de ter instalado:
+
+- Node.js 18+
+- Yarn
+- PostgreSQL
+- Conta no Supabase
+
+## 🔧 Configuração
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/feliphepaz/cartrader.git
+cd cartrader
+```
+
+2. Instale as dependências:
+
+```bash
 yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+3. Configure as variáveis de ambiente:
 
-Start the development server on `http://localhost:3000`:
+Crie um arquivo `.env` na raiz do projeto com as variáveis necessárias para o Prisma e o Supabase, por exemplo:
 
 ```bash
-# npm
-npm run dev
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=public"
+DIRECT_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=public"
+```
 
-# pnpm
-pnpm run dev
+Se o projeto estiver usando autenticação do Supabase, também configure as variáveis do serviço conforme seu projeto.
 
-# yarn
+## 🗄️ Banco de dados
+
+O schema do banco está em `prisma/schema.prisma`.
+
+Para gerar o cliente do Prisma e aplicar o schema:
+
+```bash
+npx prisma generate
+npx prisma migrate dev
+```
+
+## ▶️ Executando o projeto
+
+Inicie o servidor de desenvolvimento:
+
+```bash
 yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
+A aplicação estará disponível em:
 
 ```bash
-# npm
-npm run build
+http://localhost:3000
+```
 
-# pnpm
-pnpm run build
+## 🏗️ Build para produção
 
-# yarn
+```bash
 yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+Para visualizar a build localmente:
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
 yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 📌 Observações
+
+O projeto usa rotas de servidor do Nuxt para expor a lógica de consulta dos veículos, filtrando por cidade e parâmetros como marca e faixa de preço. A aplicação também integra autenticação e dados de usuário com Supabase, enquanto o Prisma organiza a camada de persistência.
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas. Para sugerir melhorias ou corrigir problemas:
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature
+3. Commit e push
+4. Abra um pull request
+
+## 📎 Repositório
+
+- GitHub: https://github.com/feliphepaz/cartrader
